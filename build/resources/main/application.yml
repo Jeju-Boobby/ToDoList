@@ -1,0 +1,11 @@
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:mysql://localhost/todolist?characterEncoding=utf-8
+    username: root
+    password: qkqh1125
+    driver-class-name: org.mariadb.jdbc.Driver
+  devtools:
+    livereload:
+      enabled: true
