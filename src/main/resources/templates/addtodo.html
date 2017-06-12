@@ -10,10 +10,11 @@
     <form th:action="@{/todo/add}" th:object="${todo}" method="post">
         <h2>할일등록</h2>
 
-        <select name="category" th:field="*{category}" required="required">
-            <option value="">구분</option>
-            <option value="APPOINTMENT">약속</option>
-            <option value="REPORT">과제</option>
+        <select th:field="*{category}">
+            <option th:each="category : ${T(kr.ac.jejunu.model.ToDoCategory).values()}"
+                    th:value="${category}"
+                    th:text="${category}">
+            </option>
         </select>
         <input type="text" name="title" th:field="*{title}" placeholder="제목" required="required"/>
         <input type="datetime" name="plantime" th:field="*{planTime}" placeholder="계획일" required="required"/>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>프로필 수정</title>
+</head>
+<body>
+<form th:action="@{/editProfileProcessing}" th:object="${user}" method="post">
+    <h2>프로필 수정</h2>
+    <div th:if="${param.incorrectPassword}">
+        <p>비밀번호가 틀렸습니다.</p>
+    </div>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>아이디</th>
+            <td th:text="${profile.id}">Boobby</td>
+            <input type="hidden" name="id" id="id" th:value="${profile.id}"/>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td>
+                <input type="password" name="password" th:field="*{password}" placeholder="Input Password" required="required"/>
+            </td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td><input type="text" name="name" id="name" th:value="${profile.name}" required="required"/></td>
+        </tr>
+        <tr>
+            <th>직업</th>
+            <td><input type="text" name="job" id="job" th:value="${profile.job}" required="required"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="수정"/>
+</form>
+</body>
+</html>

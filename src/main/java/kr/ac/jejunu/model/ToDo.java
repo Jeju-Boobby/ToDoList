@@ -19,17 +19,25 @@ public class ToDo {
     private User user;
 
     @Column(name = "category")
+    @Enumerated(EnumType.STRING)
     private ToDoCategory category;
 
     @Column(name = "title")
     private String title;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "plan_time")
     private Date planTime;
 
     @Column(name = "text")
     private String text;
+
+    @Column(name = "todo_status", length = 30, columnDefinition = "varchar(30) default 'TO_DO'")
+    @Enumerated(EnumType.STRING)
+    private ToDoStatus toDoStatus = ToDoStatus.TO_DO;
+
+    @Transient
+    private RemainTime remainTime;
 
     public Long getNo() {
         return no;
@@ -71,11 +79,29 @@ public class ToDo {
         return category;
     }
 
+
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public ToDoStatus getToDoStatus() {
+        return toDoStatus;
+    }
+
+    public void setToDoStatus(ToDoStatus toDoStatus) {
+        this.toDoStatus = toDoStatus;
+    }
+
+    public RemainTime getRemainTime() {
+        return remainTime;
+    }
+
+    public void setRemainTime(RemainTime remainTime) {
+        this.remainTime = remainTime;
     }
 }

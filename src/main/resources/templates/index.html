@@ -40,7 +40,7 @@
             <tr th:each="toDo : ${toDoList}">
                 <td th:text="${toDo.category}">카테고리</td>
                 <td><a th:href="@{/todo/{toDoNo}/detail(toDoNo=${toDo.no})}" th:text="${toDo.title}">제목</a></td>
-                <td th:text="${toDo.planTime}">계획일</td>
+                <td th:text="${toDo.remainTime}">남은 시간</td>
                 <td><a href="" th:href="@{/todo/{toDoNo}/remove(toDoNo=${toDo.no})}">삭제</a></td>
                 <!--<td><a href="" th:href="@{remove(id=${user.id})}">삭제</a></td>-->
             </tr>

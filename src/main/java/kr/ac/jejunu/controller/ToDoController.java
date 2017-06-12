@@ -61,7 +61,7 @@ public class ToDoController {
 
         // 작성자의 요청인지 확인
         if (user.getUsername().equals(toDo.getUser().getId())) {
-            modelMap.addAttribute("toDo", toDo);
+            modelMap.addAttribute("todo", toDo);
         } else {
             return "redirect:/index?invalidAccess";
         }

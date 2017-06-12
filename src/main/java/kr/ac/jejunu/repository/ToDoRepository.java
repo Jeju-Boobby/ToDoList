@@ -1,6 +1,7 @@
 package kr.ac.jejunu.repository;
 
 import kr.ac.jejunu.model.ToDo;
+import kr.ac.jejunu.model.ToDoStatus;
 import kr.ac.jejunu.model.User;
 import org.springframework.data.repository.CrudRepository;
 
@@ -11,5 +12,5 @@ import java.util.List;
  */
 public interface ToDoRepository extends CrudRepository<ToDo, Long>{
 
-    List<ToDo> findAllByUser(User user);
+    List<ToDo> findAllByUserAndToDoStatus(User user, ToDoStatus toDoStatus);
 }
