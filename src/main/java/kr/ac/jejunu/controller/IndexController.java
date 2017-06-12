@@ -33,9 +33,15 @@ public class IndexController {
     @RequestMapping(value = "/index")
     public String index(@AuthenticationPrincipal User user, ModelMap modelMap) {
         if (user != null) {
-            toDoService.checkAndUpdateUsersToDoListStatus(userService.findUser(user.getUsername()));
-            List<ToDo> toDoList = toDoService.getUsersToDoList(userService.findUser(user.getUsername()));
+            kr.ac.jejunu.model.User toDoListUser = userService.findUser(user.getUsername());
+            toDoService.checkAndUpdateUsersToDoListStatus(toDoListUser);
+            List<ToDo> toDoList = toDoService.getUsersToDoList(toDoListUser);
+            List<ToDo> failList = toDoService.getUsersFailList(toDoListUser);
+            List<ToDo> doneList = toDoService.getUsersDoneList(toDoListUser);
+
             modelMap.addAttribute("toDoList", toDoList);
+            modelMap.addAttribute("failList", failList);
+            modelMap.addAttribute("doneList", doneList);
         }
 
         return "/index";

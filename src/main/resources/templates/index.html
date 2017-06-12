@@ -7,6 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>To Do List</title>
+    <link rel="stylesheet" type="text/css" href="/css/todolist.css"/>
 </head>
 <body>
 <header>
@@ -43,6 +44,46 @@
                 <td th:text="${toDo.remainTime}">남은 시간</td>
                 <td><a href="" th:href="@{/todo/{toDoNo}/remove(toDoNo=${toDo.no})}">삭제</a></td>
                 <!--<td><a href="" th:href="@{remove(id=${user.id})}">삭제</a></td>-->
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <table>
+            <caption>게으름은 죄다</caption>
+            <thead>
+            <tr>
+                <th>구분</th>
+                <th>제목</th>
+                <th>계획일</th>
+                <th>반성 완료</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="fail : ${failList}">
+                <td th:text="${fail.category}">약속</td>
+                <td><a th:href="@{/todo/{toDoNo}/detail(toDoNo=${fail.no})}" th:text="${fail.title}">과제하기</a></td>
+                <td th:text="${#dates.format(fail.planTime, 'yyyy년 MM월 dd일')}">2017년 06월 1일</td>
+                <td><a href="" th:href="@{/todo/{toDoNo}/remove(toDoNo=${fail.no})}">삭제</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <table>
+            <caption>참 잘했어요</caption>
+            <thead>
+            <tr>
+                <th>구분</th>
+                <th>제목</th>
+                <th>계획일</th>
+                <th>삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="done : ${doneList}">
+                <td th:text="${done.category}">약속</td>
+                <td><a th:href="@{/todo/{toDoNo}/detail(toDoNo=${done.no})}" th:text="${done.title}">과제하기</a></td>
+                <td th:text="${#dates.format(done.planTime, 'yyyy년 MM월 dd일')}">2017년 06월 1일</td>
+                <td><a href="" th:href="@{/todo/{toDoNo}/remove(toDoNo=${done.no})}">삭제</a></td>
             </tr>
             </tbody>
         </table>
