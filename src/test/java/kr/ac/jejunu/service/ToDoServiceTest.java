@@ -53,7 +53,7 @@ public class ToDoServiceTest {
     public void saveToDoTest() {
         ToDo toDo = new ToDo();
 
-        ToDoCategory category = ToDoCategory.APPOINTMENT;
+        ToDoCategory category = ToDoCategory.약속;
         String title = "친구들과 거하게 한잔하기";
         Timestamp planTime = Timestamp.valueOf("2017-07-10 21:00:00");
         String text = "죽지말자";
@@ -80,7 +80,7 @@ public class ToDoServiceTest {
         for (int i = 0; i < COUNT; i++) {
             ToDo toDo = new ToDo();
 
-            ToDoCategory category = ToDoCategory.APPOINTMENT;
+            ToDoCategory category = ToDoCategory.약속;
             String title = (i + 1) + "번";
             Timestamp planTime = Timestamp.valueOf("2017-07-10 21:" + i + ":00");
             String text = "가나다라 " + i;
@@ -94,12 +94,12 @@ public class ToDoServiceTest {
             toDoService.saveToDo(toDo);
         }
 
-        List<ToDo> toDoList = toDoService.getUsersToDoList(writer);
-        for (ToDo toDo : toDoList) {
+        List<ToDo> allToDoList = toDoService.getUsersAllToDoList(writer);
+        for (ToDo toDo : allToDoList) {
             System.out.println(toDo.getTitle());
         }
 
-        assertThat(toDoList.size(), is(COUNT));
+        assertThat(allToDoList.size(), is(COUNT));
     }
 
 }

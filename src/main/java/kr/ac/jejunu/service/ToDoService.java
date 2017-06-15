@@ -6,6 +6,7 @@ import kr.ac.jejunu.model.ToDoStatus;
 import kr.ac.jejunu.model.User;
 import kr.ac.jejunu.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,16 +28,16 @@ public class ToDoService {
         return toDoRepository.save(toDo);
     }
 
-    public List<ToDo> getUsersToDoList(User user) {
-        return toDoRepository.findAllByUserAndToDoStatus(user, ToDoStatus.TO_DO);
+    public List<ToDo> getUsersToDoList(User user, Sort sort) {
+        return toDoRepository.findAllByUserAndToDoStatus(user, ToDoStatus.TO_DO, sort);
     }
 
-    public List<ToDo> getUsersFailList(User user) {
-        return toDoRepository.findAllByUserAndToDoStatus(user, ToDoStatus.FAIL);
+    public List<ToDo> getUsersFailList(User user, Sort sort) {
+        return toDoRepository.findAllByUserAndToDoStatus(user, ToDoStatus.FAIL, sort);
     }
 
-    public List<ToDo> getUsersDoneList(User user) {
-        return toDoRepository.findAllByUserAndToDoStatus(user, ToDoStatus.DONE);
+    public List<ToDo> getUsersDoneList(User user, Sort sort) {
+        return toDoRepository.findAllByUserAndToDoStatus(user, ToDoStatus.DONE, sort);
     }
 
     public void deleteToDo(Long toDoNo) {
@@ -97,5 +98,23 @@ public class ToDoService {
         RemainTime remainTime = remainTime1;
 
         return remainTime;
+    }
+
+    public void updateStatusToDone(Long toDoNo) {
+        ToDo toDo = toDoRepository.findOne(toDoNo);
+        toDo.setToDoStatus(ToDoStatus.DONE);
+
+        toDoRepository.save(toDo);
+    }
+
+    public void updateStatusToFail(Long toDoNo) {
+        ToDo toDo = toDoRepository.findOne(toDoNo);
+        toDo.setToDoStatus(ToDoStatus.FAIL);
+
+        toDoRepository.save(toDo);
+    }
+
+    public List<ToDo> getUsersAllToDoList(User user) {
+        return toDoRepository.findAllByUser(user);
     }
 }

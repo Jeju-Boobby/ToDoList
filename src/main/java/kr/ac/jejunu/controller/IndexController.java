@@ -4,6 +4,8 @@ import kr.ac.jejunu.model.ToDo;
 import kr.ac.jejunu.service.ToDoService;
 import kr.ac.jejunu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.SortDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,13 +33,13 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/index")
-    public String index(@AuthenticationPrincipal User user, ModelMap modelMap) {
+    public String index(@AuthenticationPrincipal User user, ModelMap modelMap, @SortDefault(sort = {"planTime"}) Sort sort) {
         if (user != null) {
             kr.ac.jejunu.model.User toDoListUser = userService.findUser(user.getUsername());
             toDoService.checkAndUpdateUsersToDoListStatus(toDoListUser);
-            List<ToDo> toDoList = toDoService.getUsersToDoList(toDoListUser);
-            List<ToDo> failList = toDoService.getUsersFailList(toDoListUser);
-            List<ToDo> doneList = toDoService.getUsersDoneList(toDoListUser);
+            List<ToDo> toDoList = toDoService.getUsersToDoList(toDoListUser, sort);
+            List<ToDo> failList = toDoService.getUsersFailList(toDoListUser, sort);
+            List<ToDo> doneList = toDoService.getUsersDoneList(toDoListUser, sort);
 
             modelMap.addAttribute("toDoList", toDoList);
             modelMap.addAttribute("failList", failList);

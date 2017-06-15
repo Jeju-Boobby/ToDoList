@@ -25,9 +25,7 @@ import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/stylesheets/**",
-                "/javascripts/**",
-                "/images/**");
+        web.ignoring().antMatchers("/css/**", "/images/**", "/js/**");
     }
 
     @Override

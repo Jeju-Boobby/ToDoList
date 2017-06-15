@@ -4,6 +4,8 @@ import kr.ac.jejunu.model.ToDo;
 import kr.ac.jejunu.service.ToDoService;
 import kr.ac.jejunu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.SortDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -67,5 +69,33 @@ public class ToDoController {
         }
 
         return "tododetail";
+    }
+
+    @RequestMapping(value = "/{toDoNo}/done")
+    public String doneToDo(@AuthenticationPrincipal User user, @PathVariable Long toDoNo) {
+        ToDo toDo = toDoService.getToDo(toDoNo);
+
+        // 작성자의 요청인지 확인
+        if (user.getUsername().equals(toDo.getUser().getId())) {
+            toDoService.updateStatusToDone(toDoNo);
+        } else {
+            return "redirect:/index?invalidAccess";
+        }
+
+        return "redirect:/index";
+    }
+
+    @RequestMapping(value = "/{toDoNo}/fail")
+    public String failToDo(@AuthenticationPrincipal User user, @PathVariable Long toDoNo) {
+        ToDo toDo = toDoService.getToDo(toDoNo);
+
+        // 작성자의 요청인지 확인
+        if (user.getUsername().equals(toDo.getUser().getId())) {
+            toDoService.updateStatusToFail(toDoNo);
+        } else {
+            return "redirect:/index?invalidAccess";
+        }
+
+        return "redirect:/index";
     }
 }
