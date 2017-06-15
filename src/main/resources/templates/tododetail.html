@@ -1,31 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.typeleaf.org">
+<html xmlns:th="http://www.typeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8"/>
     <title>할일 상세</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/todolist.css}"/>
 </head>
 <body>
-<div>
+<header class="header">
+    <h1 class="title">To Do List</h1>
+    <div sec:authorize="isAuthenticated()" class="menu">
+        <a th:href="@{/editprofile}" class="button">프로필수정</a>
+        <a th:href="@{/logout}" class="button">로그아웃</a>
+    </div>
+    <div sec:authorize="isAnonymous()" class="menu">
+        <a th:href="@{/login}" class="button">로그인</a>
+        <a th:href="@{/register}" class="button">회원가입</a>
+    </div>
+</header>
+<main class="container todo">
     <h2>할 일 상세</h2>
-
-    <table>
+    <table class="todo">
         <tbody>
         <tr>
-            <th>제목</th>
+            <th>제목:</th>
             <td th:text="'[' + ${todo.category} + ']' + ' ' + ${todo.title}"></td>
         </tr>
         <tr>
-            <th>계획일</th>
+            <th>계획일:</th>
             <td th:text="${#dates.format(todo.planTime, 'yyyy년 MM월 dd일 HH시 mm분')}"></td>
         </tr>
         <tr>
-            <th>내용</th>
+            <th>내용:</th>
             <td th:text="${todo.text}"></td>
         </tr>
         </tbody>
     </table>
-    <a th:href="@{/todo/{toDoNo}/edit(toDoNo=${todo.no})}">수정</a>
-    <a th:href="@{/index}">취소</a>
-</div>
+    <a th:href="@{/todo/{toDoNo}/edit(toDoNo=${todo.no})}" class="button  medium">수정</a>
+    <a th:href="@{/index}" class="button medium">취소</a>
+</main>
 </body>
 </html>

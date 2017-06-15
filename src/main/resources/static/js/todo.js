@@ -20,7 +20,20 @@ window.onload = function () {
 }
 
 function submit() {
+  var title = document.getElementById("title").value;
+
+  if (title == "") {
+    alert("제목을 입력하세요.");
+    return;
+  }
+
   var date = document.getElementById("date").value;
+
+  if (date == "") {
+    alert("계획일을 입력하세요.");
+    return;
+  }
+
   var time = document.getElementById("time").value;
   var change = date + " " + time;
 

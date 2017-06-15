@@ -82,10 +82,12 @@ a.button {
     padding: 5px 10px;
 }
 
-h2.null_text {
+main .container h2.null_text {
     display: inline-block;
     font-size: 1.5rem;
     margin: 5px 10px;
+    text-align: left;
+    font-weight: 400;
 }
 
 .right {
@@ -100,10 +102,17 @@ header.header:after {
 }
 
 main p.error {
-    color: #8b0000;
-    font-size: 1.2rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #ff0000;
+    font-size: 1.0rem;
 }
 
+main p.success {
+    color: #1e90ff;
+    font-size: 1.0rem;
+}
 main div.container {
     width: 100%;
     margin: 0;
@@ -155,4 +164,120 @@ div.intro {
     width: 100%;
     text-align: center;
     line-height: 3.5rem;
+}
+
+main.login {
+    display: block;
+    border: 2px solid #000000;
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 300px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+table.login th {
+    text-align: right;
+    padding: 10px;
+    width: 35%;
+    box-sizing: border-box;
+}
+
+a.medium.button {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+a.small.button {
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+form.login_form {
+    text-align: center;
+}
+
+p.register {
+    display: inline-block;
+    font-size: 0.8rem;
+}
+
+main.login div.notice {
+    text-align: center;
+}
+
+form.container {
+    display: block;
+    max-width: 300px;
+    width: 100%;
+    border: 2px solid #000000;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.container.todo {
+    display: block;
+    max-width: 500px;
+    width: 100%;
+    border: 2px solid #000000;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.container h2 {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+table.profile {
+    width: 100%;
+}
+table.profile th {
+    text-align: right;
+    padding: 10px;
+    width: 35%;
+    box-sizing: border-box;
+}
+
+table.profile td.center {
+    text-align: center;
+}
+
+table.profile td {
+    width: 65%;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+table.todo {
+    width: 100%;
+}
+table.todo th {
+    text-align: right;
+    padding: 10px;
+    width: 20%;
+    box-sizing: border-box;
+}
+
+table.todo td.center {
+    text-align: center;
+}
+
+table.todo td {
+    width: 65%;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+table.todo td textarea.text {
+    width: 80%;
+    height: 10rem;
+    vertical-align: top;
+
 }

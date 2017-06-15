@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.typeleaf.org">
+<html xmlns:th="http://www.typeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>로그인</title>
-
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>로그인</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/todolist.css}"/>
 </head>
 <body>
-  <div>
-    <form th:action="@{/loginProcessing}" method="post">
-      <div th:if="${param.error}">
-        잘못된 아이디나 암호입니다.
-      </div>
-      <div th:if="${param.registerSuccessful}">
-        회원가입이 정상적으로 완료되었습니다. 로그인 하세요.
-      </div>
-      <div>
-        <input type="text" name="username" placeholder="ID" required="required"/>
-      </div>
-      <div>
-        <input type="password" name="password" placeholder="Password" required="required"/>
-      </div>
-      <button type="submit">로그인</button>
-    </form>
-    <div>
-      <a th:href="@{/register}">회원 가입</a>
+<header class="header">
+    <h1 class="title">To Do List</h1>
+    <div sec:authorize="isAuthenticated()" class="menu">
+        <a th:href="@{/editprofile}" class="button">프로필수정</a>
+        <a th:href="@{/logout}" class="button">로그아웃</a>
     </div>
-  </div>
+    <div sec:authorize="isAnonymous()" class="menu">
+        <a th:href="@{/login}" class="button">로그인</a>
+        <a th:href="@{/register}" class="button">회원가입</a>
+    </div>
+</header>
+<main class="login">
+    <form th:action="@{/loginProcessing}" method="post" id="form" class="login_form">
+        <div th:if="${param.error}">
+            <p class="error">잘못된 아이디나 암호입니다.</p>
+        </div>
+        <div th:if="${param.registerSuccessful}">
+            <p class="success">회원가입이 정상적으로 완료되었습니다. 로그인 하세요.</p>
+        </div>
+        <table class="login">
+            <tbody>
+            <tr>
+                <th>ID:</th>
+                <td><input type="text" name="username" required="required"/></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td><input type="password" name="password" required="required"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="#" onclick="submit()" class="button medium">로그인</a>
+        <a th:href="@{/index}" class="button medium">홈으로</a>
+    </form>
+    <div class="notice">
+        <p class="register">아직 회원이 아니세요?</p>
+        <a th:href="@{/register}" class="button small">회원 가입</a>
+    </div>
+</main>
+<script type="text/javascript" th:src="@{/js/submit.js}"></script>
 </body>
 </html>

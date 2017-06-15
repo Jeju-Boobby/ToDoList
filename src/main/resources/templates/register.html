@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.typeleaf.org">
+<html xmlns:th="http://www.typeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8"/>
     <title>회원가입</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/todolist.css}"/>
 </head>
 <body>
-<div>
-
-    <form th:action="@{/registerProcessing}" th:object="${user}" method="post">
+<header class="header">
+    <h1 class="title">To Do List</h1>
+    <div sec:authorize="isAuthenticated()" class="menu">
+        <a th:href="@{/editprofile}" class="button">프로필수정</a>
+        <a th:href="@{/logout}" class="button">로그아웃</a>
+    </div>
+    <div sec:authorize="isAnonymous()" class="menu">
+        <a th:href="@{/login}" class="button">로그인</a>
+        <a th:href="@{/register}" class="button">회원가입</a>
+    </div>
+</header>
+<main>
+    <form th:action="@{/registerProcessing}" th:object="${user}" method="post" class="container" id="form">
         <h2>회원가입</h2>
-
-        <div th:if="${param.error}">
-            계정이 중복됩니다.
-        </div>
-
-        <input type="text" name="id" th:field="*{id}" placeholder="아이디" required="required"/>
-        <input type="password" name="password" th:field="*{password}" placeholder="암호" required="required"/>
-        <input type="text" name="name" th:field="*{name}" placeholder="이름" required="required"/>
-        <input type="text" name="job" th:field="*{job}" placeholder="직업" required="required"/>
-
-        <input type="submit" value="회원가입"/>
+        <table class="profile">
+            <tbody>
+            <tr>
+                <th>ID:</th>
+                <td><input type="text" th:field="*{id}" placeholder="아이디" required="required"/></td>
+            </tr>
+            <tr th:if="${param.error}">
+                <td colspan="2" class="center"><p class="error">아이디가 중복됩니다.</p></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td>
+                    <input type="password" th:field="*{password}" placeholder="암호" required="required"/>
+                </td>
+            </tr>
+            <tr>
+                <th>이름:</th>
+                <td><input type="text" th:field="*{name}" placeholder="이름" required="required"/></td>
+            </tr>
+            <tr>
+                <th>직업:</th>
+                <td><input type="text" th:field="*{job}" placeholder="직업" required="required"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="#" onclick="submit()" class="medium button">회원가입</a>
+        <a th:href="@{/index}" class="medium button">취소</a>
     </form>
-
-</div>
+</main>
+<script type="text/javascript" th:src="@{/js/register_submit.js}"></script>
 </body>
 </html>

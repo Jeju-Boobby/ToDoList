@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.typeleaf.org">
+<html xmlns:th="http://www.typeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8"/>
     <title>할일 등록</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/todolist.css}"/>
 </head>
 <body>
-
-<div>
-
-    <form th:action="@{/todo/add}" th:object="${todo}" method="post" id="todo">
-        <table>
-            <caption>할일 등록</caption>
+<header class="header">
+    <h1 class="title">To Do List</h1>
+    <div sec:authorize="isAuthenticated()" class="menu">
+        <a th:href="@{/editprofile}" class="button">프로필수정</a>
+        <a th:href="@{/logout}" class="button">로그아웃</a>
+    </div>
+    <div sec:authorize="isAnonymous()" class="menu">
+        <a th:href="@{/login}" class="button">로그인</a>
+        <a th:href="@{/register}" class="button">회원가입</a>
+    </div>
+</header>
+<main>
+    <form th:action="@{/todo/add}" th:object="${todo}" method="post" id="todo" class="container todo">
+        <h2>할일 등록</h2>
+        <table class="todo">
             <tbody>
             <tr>
-                <th>제목</th>
+                <th>제목:</th>
                 <td>
                     <select th:field="*{category}">
                         <option th:each="category : ${T(kr.ac.jejunu.model.ToDoCategory).values()}"
@@ -25,7 +36,7 @@
                 </td>
             </tr>
             <tr>
-                <th>계획일</th>
+                <th>계획일:</th>
                 <td>
                     <input type="date" id="date" required="required"/>
                     <input type="time" id="time" value="00:00" required="required"/>
@@ -33,14 +44,18 @@
                 </td>
             </tr>
             <tr>
-                <th>내용</th>
-                <td><input type="text" name="text" th:field="*{text}" placeholder="내용" required="required"/></td>
+                <th>내용:</th>
+                <td>
+                    <!--<input type="text" name="text" th:field="*{text}" placeholder="내용" required="required" class="text"/>-->
+                <textarea name="text" th:field="*{text}" class="text"></textarea>
+                </td>
             </tr>
             </tbody>
         </table>
-        <a href="#" onclick="submit()">등록</a>
+        <a href="#" onclick="submit()" class="medium button">등록</a>
+        <a th:href="@{/index}"  class="medium button">취소</a>
     </form>
-</div>
+</main>
 <script type="text/javascript" th:src="@{/js/todo.js}"></script>
 </body>
 </html>

@@ -1,40 +1,57 @@
 <!DOCTYPE html>
-<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="kr" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title>프로필 수정</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/todolist.css}"/>
 </head>
 <body>
-<form th:action="@{/editProfileProcessing}" th:object="${user}" method="post">
-    <h2>프로필 수정</h2>
-    <div th:if="${param.incorrectPassword}">
-        <p>비밀번호가 틀렸습니다.</p>
+<header class="header">
+    <h1 class="title">To Do List</h1>
+    <div sec:authorize="isAuthenticated()" class="menu">
+        <a th:href="@{/editprofile}" class="button">프로필수정</a>
+        <a th:href="@{/logout}" class="button">로그아웃</a>
     </div>
-
-    <table>
-        <tbody>
-        <tr>
-            <th>아이디</th>
-            <td th:text="${profile.id}">Boobby</td>
-            <input type="hidden" name="id" id="id" th:value="${profile.id}"/>
-        </tr>
-        <tr>
-            <th>비밀번호</th>
-            <td>
-                <input type="password" name="password" th:field="*{password}" placeholder="Input Password" required="required"/>
-            </td>
-        </tr>
-        <tr>
-            <th>이름</th>
-            <td><input type="text" name="name" id="name" th:value="${profile.name}" required="required"/></td>
-        </tr>
-        <tr>
-            <th>직업</th>
-            <td><input type="text" name="job" id="job" th:value="${profile.job}" required="required"/></td>
-        </tr>
-        </tbody>
-    </table>
-    <input type="submit" value="수정"/>
-</form>
+    <div sec:authorize="isAnonymous()" class="menu">
+        <a th:href="@{/login}" class="button">로그인</a>
+        <a th:href="@{/register}" class="button">회원가입</a>
+    </div>
+</header>
+<main>
+    <form th:action="@{/editProfileProcessing}" th:object="${user}" method="post" class="container" id="form">
+        <h2>프로필 수정</h2>
+        <table class="profile">
+            <tbody>
+            <tr>
+                <th>ID:</th>
+                <td th:text="${profile.id}">Boobby</td>
+                <input type="hidden" name="id" id="id" th:value="${profile.id}"/>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td>
+                    <input type="password" name="password" th:field="*{password}" placeholder="비밀번호를 입력하세요."
+                           required="required"/>
+                </td>
+            </tr>
+            <tr th:if="${param.incorrectPassword}">
+                <td colspan="2" class="center"><p class="error">비밀번호가 틀렸습니다.</p></td>
+            </tr>
+            <tr>
+                <th>이름:</th>
+                <td><input type="text" name="name" id="name" th:value="${profile.name}" required="required"/></td>
+            </tr>
+            <tr>
+                <th>직업:</th>
+                <td><input type="text" name="job" id="job" th:value="${profile.job}" required="required"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="#" onclick="submit()" class="medium button">수정</a>
+        <a th:href="@{/index}"  class="medium button">취소</a>
+    </form>
+</main>
+<script type="text/javascript" th:src="@{/js/submit.js}"></script>
 </body>
 </html>
