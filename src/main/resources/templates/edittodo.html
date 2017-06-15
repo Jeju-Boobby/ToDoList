@@ -8,36 +8,38 @@
 
 <div>
 
-    <form th:action="@{/todo/add}" th:object="${todo}" method="post" id="todo">
+    <form th:action="@{/todo/{toDoNo}/editProcessing(toDoNo=${oldtodo.no})}" th:object="${todo}" method="post" id="todo">
         <table>
             <caption>할일 등록</caption>
             <tbody>
             <tr>
                 <th>제목</th>
                 <td>
-                    <select th:field="*{category}">
+                    <select name="category" id="category">
                         <option th:each="category : ${T(kr.ac.jejunu.model.ToDoCategory).values()}"
                                 th:value="${category}"
-                                th:text="${category}">
+                                th:text="${category}"
+                                th:selected="${category} eq ${oldtodo.category}">
                         </option>
                     </select>
-                    <input type="text" name="title" th:field="*{title}" placeholder="제목" required="required"/>
+                    <input type="text" name="title" id="title" th:value="${oldtodo.title}" required="required"/>
                 </td>
             </tr>
             <tr>
                 <th>계획일</th>
                 <td>
-                    <input type="date" id="date" required="required"/>
-                    <input type="time" id="time" value="00:00" required="required"/>
+                    <input type="date" id="date" th:value="${#strings.arraySplit(oldtodo.planTime, ' ')[0]}" required="required"/>
+                    <input type="time" id="time" th:value="${#strings.arraySplit(oldtodo.planTime, ' ')[1]}" required="required"/>
                     <input type="hidden" th:field="*{planTime}"/>
                 </td>
             </tr>
             <tr>
                 <th>내용</th>
-                <td><input type="text" name="text" th:field="*{text}" placeholder="내용" required="required"/></td>
+                <td><input type="text" name="text" id="text" th:value="${oldtodo.text}" required="required"/></td>
             </tr>
             </tbody>
         </table>
+        <input type="hidden" name="toDoStatus" id="toDoStatus" th:value="${oldtodo.toDoStatus}"/>
         <a href="#" onclick="submit()">등록</a>
     </form>
 </div>

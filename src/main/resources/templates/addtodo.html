@@ -27,8 +27,8 @@
             <tr>
                 <th>계획일</th>
                 <td>
-                    <input type="date" id="date" min="2017-06-01" required="required"/>
-                    <input type="time" id="time" value="00:00"/>
+                    <input type="date" id="date" required="required"/>
+                    <input type="time" id="time" value="00:00" required="required"/>
                     <input type="hidden" th:field="*{planTime}"/>
                 </td>
             </tr>
@@ -41,6 +41,6 @@
         <a href="#" onclick="submit()">등록</a>
     </form>
 </div>
-<script type="text/javascript" th:src="@{/js/todolist.js}"></script>
+<script type="text/javascript" th:src="@{/js/todo.js}"></script>
 </body>
 </html>

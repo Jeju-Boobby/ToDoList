@@ -39,7 +39,9 @@ public class IndexController {
             toDoService.checkAndUpdateUsersToDoListStatus(toDoListUser);
             List<ToDo> toDoList = toDoService.getUsersToDoList(toDoListUser, sort);
             List<ToDo> failList = toDoService.getUsersFailList(toDoListUser, sort);
-            List<ToDo> doneList = toDoService.getUsersDoneList(toDoListUser, sort);
+
+            Sort descSort = new Sort(Sort.Direction.DESC, new String[]{"planTime"});
+            List<ToDo> doneList = toDoService.getUsersDoneList(toDoListUser, descSort);
 
             modelMap.addAttribute("toDoList", toDoList);
             modelMap.addAttribute("failList", failList);

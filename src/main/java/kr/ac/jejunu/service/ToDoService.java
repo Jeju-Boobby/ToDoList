@@ -117,4 +117,8 @@ public class ToDoService {
     public List<ToDo> getUsersAllToDoList(User user) {
         return toDoRepository.findAllByUser(user);
     }
+
+    public void updateToDo(ToDo oldToDo) {
+        toDoRepository.save(oldToDo);
+    }
 }

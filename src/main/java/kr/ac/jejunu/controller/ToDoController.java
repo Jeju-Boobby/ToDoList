@@ -85,6 +85,21 @@ public class ToDoController {
         return "redirect:/index";
     }
 
+    @RequestMapping(value = "/{toDoNo}/edit")
+    public String editToDo(@AuthenticationPrincipal User user, @PathVariable Long toDoNo, ModelMap modelMap) {
+        ToDo oldToDo = toDoService.getToDo(toDoNo);
+
+        // 작성자의 요청인지 확인
+        if (user.getUsername().equals(oldToDo.getUser().getId())) {
+            modelMap.addAttribute("oldtodo", oldToDo);
+            modelMap.addAttribute("todo", new ToDo());
+        } else {
+            return "redirect:/index?invalidAccess";
+        }
+
+        return "edittodo";
+    }
+
     @RequestMapping(value = "/{toDoNo}/fail")
     public String failToDo(@AuthenticationPrincipal User user, @PathVariable Long toDoNo) {
         ToDo toDo = toDoService.getToDo(toDoNo);
@@ -97,5 +112,20 @@ public class ToDoController {
         }
 
         return "redirect:/index";
+    }
+
+    @RequestMapping(value = "/{toDoNo}/editProcessing", method = RequestMethod.POST)
+    public String editProcessing(@AuthenticationPrincipal User user, @PathVariable Long toDoNo, @ModelAttribute ToDo toDo) {
+        ToDo oldToDo = toDoService.getToDo(toDoNo);
+
+        // 작성자의 요청인지 확인
+        if (user.getUsername().equals(oldToDo.getUser().getId())) {
+            toDo.setNo(toDoNo);
+            toDo.setUser(userService.findUser(user.getUsername()));
+            toDoService.updateToDo(toDo);
+        } else {
+            return "redirect:/index?invalidAccess";
+        }
+        return "redirect:/todo/" + toDoNo + "/detail";
     }
 }
