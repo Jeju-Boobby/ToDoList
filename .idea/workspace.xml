@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="715dc014-765c-49e2-8956-72b39fc59ef3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/todolist.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/controller/IndexController.class" afterPath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/controller/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/controller/ToDoController.class" afterPath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/controller/ToDoController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/model/ToDoCategory.class" afterPath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/model/ToDoCategory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/repository/ToDoRepository.class" afterPath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/repository/ToDoRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/security/config/SecurityConfig$AuthenticationConfiguration.class" afterPath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/security/config/SecurityConfig$AuthenticationConfiguration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/security/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/security/config/SecurityConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/service/ToDoService.class" afterPath="$PROJECT_DIR$/build/classes/main/kr/ac/jejunu/service/ToDoService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/kr/ac/jejunu/service/ToDoServiceTest.class" afterPath="$PROJECT_DIR$/build/classes/test/kr/ac/jejunu/service/ToDoServiceTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/application.yml" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/static/css/todolist.css" afterPath="$PROJECT_DIR$/build/resources/main/static/css/todolist.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/addtodo.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/addtodo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/index.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/controller/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/controller/IndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/controller/ToDoController.java" afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/controller/ToDoController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/model/ToDoCategory.java" afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/model/ToDoCategory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/repository/ToDoRepository.java" afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/repository/ToDoRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/security/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/security/config/SecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/service/ToDoService.java" afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/service/ToDoService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/todolist.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/todolist.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/addtodo.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/addtodo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/kr/ac/jejunu/service/ToDoServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/kr/ac/jejunu/service/ToDoServiceTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -191,8 +167,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="397">
+              <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -1410,7 +1386,7 @@
       <workItem from="1497278218151" duration="618000" />
       <workItem from="1497347727121" duration="10440000" />
       <workItem from="1497421571501" duration="22130000" />
-      <workItem from="1497516809084" duration="523000" />
+      <workItem from="1497516809084" duration="582000" />
     </task>
     <servers />
   </component>
@@ -1447,7 +1423,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112189000" />
+    <option name="totallyTimeSpent" value="112248000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="83" y="-11" width="1848" height="1102" extended-state="6" />
@@ -1868,8 +1844,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="397">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding />
         </state>
       </provider>
